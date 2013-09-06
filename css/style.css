@@ -1,0 +1,618 @@
+body 
+{ 
+	background-color:#FFFFFF;
+	width: 1024px;
+	margin:0px auto;
+}
+
+* 	
+{ 
+	color:black; 
+    font-family:'Georgia'
+}
+
+a:link {text-decoration: none; color:#9D9101}
+a:visited {text-decoration: none; color:#C7B446}
+a:active {text-decoration: none}
+a:hover {text-decoration: none; color:#3B83BD;}
+
+.logo{
+	float:left;
+}
+
+.navigation{
+	float:right;
+	margin-top: 50px;
+	width:780px;
+	display: inline-block;
+	
+}
+
+.clearfix{
+	width:100%;
+	display: inline-block;
+}
+
+
+/**===========================================SEARCH BOX ================================*/
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+
+.cf:after{
+    clear:both;
+}
+
+.cf{
+    zoom:1;
+}
+
+#search{
+	height:100px;
+}
+.form-wrapper {
+    width: 450px;
+    padding: 5px;
+    margin: 20px auto 50px auto;
+    background: #444;
+    background: black;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.form-wrapper input {
+    width: 330px;
+    height: 20px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    -moz-border-radius: 8px 0 0 8px;
+    -webkit-border-radius: 8px 0 0 8px;
+    border-radius: 8px 0 0 8px;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/20px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: black;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.form-wrapper button:hover{
+    background: #3B83BD;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus{
+    background: #3B83BD;
+}
+
+.form-wrapper button:before {
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent black transparent;
+    top: 12px;
+    left: -6px;
+    
+}
+
+.form-wrapper button:hover:before{
+    border-right-color: #3B83BD;
+}
+
+.form-wrapper button:focus:before{
+    border-right-color: #c42f2f;
+}
+
+.form-wrapper button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+/**=========================================== / SEARCH BOX ======================================*/
+
+/**===========================================LANDING PAGE LINKS ================================*/
+
+#landing_page_links{
+	width: 800px;
+	margin: 0px auto;
+}
+
+#landing_page_links div{
+	float:left;
+	height:180px;
+	width: 160px;
+	text-align: center;
+	margin: 0px 50px;
+}
+
+#landing_page_links div a{
+	
+}
+
+/*Recent Additions*/
+#recent_additions{
+	width: 800px;
+	margin: 20px auto;
+	padding:10px;
+	border: 1px solid rgba(0,0,0,0.3);
+}
+/**===========================================/ LANDING PAGE LINKS ================================*/
+
+
+
+/**===========================================PHILOSOPHERS PAGE LINKS ================================*/
+#philosophers{
+	width: 800px;
+	margin: 0px auto;
+
+}
+
+#philosophers div{
+	float:left;
+	width: 160px;
+	text-align: center;
+	margin: 0px 50px;
+	border: 1px solid rgba(0,0,0,0.3);
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+#philosophers h4{
+	margin:0px;
+	padding:0px;
+}
+
+#philosophers a
+{
+	width:100%;
+	display: inline-block;
+}
+
+/**===========================================/PHILOSOPHERS PAGE LINKS ================================*/
+
+
+
+/******************************************LISTING PAGE**************************************/
+.results_header{
+	visibility: hidden;
+	padding: 0px;
+	margin:0px;
+	height:0px;
+}
+.listing{
+	width:700px;
+	float:right;
+}
+
+.moreinfo {
+	
+	margin-right:9px;
+	display:inline-block;
+	line-height:18px;
+	font-size:12px;
+	padding:0px 3px 0px 3px;
+    color:white;
+    text-decoration: none;
+	
+	background-color:rgba(0,0,0,0.4);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.moreinfo a:hover
+{
+	color: #8b390f;
+}
+
+.item-intro {
+	padding:0px 10px;
+	margin-top:16px;
+    border-top: 1px solid #E0E0E0;
+}
+
+
+.odd {
+	background-color:rgba(0,0,0,0.05);
+}
+
+.item-intro h2 img{
+    height:20px;
+}
+
+.item-intro-desc{
+	margin-bottom: 0.5em;
+}
+
+
+
+
+/* PAGINATION */
+#pagination_top
+{
+    margin:auto;
+	text-align: center;
+	text-decoration: none;
+}
+
+#pagination_bottom
+{
+    margin:auto;
+    text-align: center;
+}
+
+.yui-pg-page
+{
+    margin:30px 0px 0px 5px;
+    padding:4px 10px 4px 10px;
+	font-size:16px;
+    background:url(images/nav_back.png) center no-repeat;
+}
+
+.yui-pg-current-page
+{
+    color:white;
+    font-weight:bold;
+    text-decoration:none;
+    
+    border:1px solid #20272d;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+}
+.yui-pg-previous
+{
+    padding-left:10px;
+    
+}
+.yui-pg-next
+{
+    padding-left:10px;
+}
+
+/* FACETS */
+.filter {
+	width:230px;
+	background:none;
+    margin-bottom:30px;
+    float:left;
+
+	-webkit-border-radius:0 0 4px 4px;
+	-moz-border-radius:0 0 4px 4px;
+	border-radius:0 0 4px 4px;
+}
+.filter a
+{
+	font-size:11px;
+	color:#82a64f;
+	float:left;
+}
+
+.filter_parent
+{
+	line-height:35px;
+    text-decoration: none;
+}
+
+.filter_parent:hover
+{
+    /*background: url(images/filter_parent_hover.png);*/
+}
+
+.filter_parent.opened:hover
+{
+    /*background: url(images/filter_parent_hover.png);*/
+}
+
+.filter_parent.opened
+{
+/* 	background-position:93% -22px; */
+}
+
+.filter_parent span {
+	margin-left:0px;
+	display:block;
+    font-size:14px;
+    color:black;
+    border-bottom: solid 1px rgba(0,0,0, 0.3)
+}
+.filter_child {
+	/*display:none;*/
+	padding-top:0.2em;
+}
+.filter_child.hasscroll {
+	overflow:hidden;
+	height:auto;
+    max-height: 215px;
+}
+.filter_child a {
+    color:black;
+	position:relative;
+    font-size:13px;
+    text-decoration: none;
+	
+}
+.filter_child a:hover
+{
+    background-color:#c9ff15;
+    color:#3c5b6f;
+    font-weight:bold;
+}
+
+.filter_child a.facet-selected
+{
+    font-size:14px;
+    font-weight:bold;
+    color:#3c5b6f;
+}
+
+.filter_child span {
+	display:inline-block;
+	padding:0px;
+	margin:3px 0px 3px 0px;
+	width:80%;
+	vertical-align:middle;
+	float:left;
+}
+
+.filter_child span.total
+{
+    color:black;
+/* 	position:relative; */
+	width:40px;
+	right:0;
+	top:0;
+	line-height:16px;
+	margin:7px 0px 0px 0px;
+	padding:1px 2px 1px 2px;
+	border:1px solid #20272d;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background-color:none;
+	font-weight:normal;
+	text-align:center;
+}
+
+.filter_child a.facet-selected span.total
+{
+    background-color:#3c5b6f;
+    font-weight:none;  
+    font-size:1em; 
+    color:white;
+}
+
+.remove_filters {
+	text-align:right;
+	height:18px;
+	text-transform:uppercase;
+   
+}
+.remove_filters a {
+	margin-right:9px;
+	display:inline-block;
+	height:18px;
+	line-height:18px;
+	font-size:10px;
+	padding:0px 3px 0px 3px;
+    color:white;
+    text-decoration: none;
+    
+    background-color:#fbbb4b;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.remove_filters a:hover
+{
+	color: #8b390f;
+}
+/*****************************************=/LISTING PAGE**************************************/
+
+/**====================================ITEM VIEW======================*/
+/*Left Sidebar in item*/
+.main_content{
+	margin:10px auto;
+	text-align: center;
+}
+#left_sidebar{
+	text-align: left;
+	width:200px;
+	float:left;
+	border-right: 1px solid rgba(0,0,0,0.3);
+	padding:10px;
+}
+#left_sidebar h2{
+	font-size: 16px;
+}
+
+#left_sidebar h3{
+	font-size: 14px;
+}
+
+#left_sidebar ul{
+	padding:0px;
+}
+
+#left_sidebar ul li{
+	list-style: none;
+}
+
+/*Center div in item*/
+#center{
+	float:left;
+	width:520px;
+	padding:10px;
+	text-align: left;
+}
+#center h2{
+	font-size: 16px;
+}
+
+#center h3{
+	font-size: 14px;
+}
+
+#center ul{
+	padding:0px;
+}
+
+#center ul li{
+	list-style: none;
+}
+
+/*Right Sidebar in item*/
+#right_sidebar{
+	float:left;
+	width:200px;
+	padding:10px;
+	text-align: left;
+	border-left: 1px solid rgba(0,0,0,0.3);
+}
+
+#right_sidebar ul{
+	padding:0px;
+}
+
+#right_sidebar ul li{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+}
+
+/* Resource actions */
+#resource_actions{
+	width:100%;
+	text-align: center;
+}
+
+#resource_actions a{
+	margin:5px 10px;
+}
+
+/* flags */
+span.flag {
+	text-indent:-9999px;
+	margin-left:3px;
+	display:inline-block;
+	width:27px;
+	height:18px;
+    background-repeat: no-repeat;
+}
+span.enflag {
+	background:url(images/flag_en.jpg) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.esflag {
+	background:url(images/flag_es.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.itflag {
+	background:url(images/flag_it.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.grflag {
+	background:url(images/flag_gr.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.etflag {
+	background:url(images/flag_et.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.roflag {
+	background:url(images/flag_ro.jpg) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.deflag {
+	background:url(images/flag_de.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+span.frflag {
+	background:url(images/flag_fr.png) 0 0 no-repeat;
+    text-indent:-9999px;
+}
+a.flag {
+	text-indent:-9999px;
+	margin-left:3px;
+	display:inline-block;
+	width:21px;
+	height:13px;
+}
+a.enflag {
+	background:url(images/flag_en.jpg) 0 0 no-repeat;
+}
+a.spflag {
+	background:url(images/flag_en.jpg) 0 0 no-repeat;
+}
+a.itflag {
+	background:url(images/flag_en.jpg) 0 0 no-repeat;
+}
+a.grflag {
+	background:url(images/flag_en.jpg) 0 0 no-repeat;
+}
+
+.access, .reportaproblem {
+	padding:35px 0 0 0;
+    margin: 2px 11px 0 28px;
+	background-position:center top;
+	background-repeat:no-repeat;
+	display:inline-block;
+	font-size:12px;
+    float:right;
+}
+
+.access{
+	background-image:url(images/access_to_the_resource.png);
+}
+
+.reportaproblem {
+	background-image:url(images/reportaproblem.png);
+}
+/**==================================== / ITEM VIEW PAGE======================*/
