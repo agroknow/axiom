@@ -77,32 +77,33 @@
 	<div id="insert_results"></div> <!--results from AJAX call-->
 	<div id="insert_pagination_bottom" class="aligncenter"></div>
 </section>
-        
+ 
+ <div class="clearfix"></div> 
+		
+		<footer>
+			<div><p>Powered by :</p></div>
+			<div><a href="http://pro.europeana.eu/web/europeana-cloud" title="Europeana-cloud" ><div><img src="images/ecloud.png"></div></a></div>
+			<div><a href="http://www.ariadne-eu.org" title="Ariadne Foundation"><div><img src="images/ariadne.png"></div></a></div>
+		</footer>       
                 
                 
 
   
         <script type="text/javascript">
-            /*
-             * function customizeFinder() is called at initialisation time
-             * you need to change values repositoryName and serviceUrl
-             * and also the same values inside the -finder.js- !
-             */
             $.noConflict();
             function customizeFinder() {
                 return {
                     /* limit collections|providers*/
-   					"selectedProviders":["EDUTNHM"],
-                    "selectedLanguage":"en",
+					/* "selectedProviders":[], */
+					/* "selectedLanguage":"en", */
                     "externalSources": ["wp","scr","ss","gb"],
                     "pageContainers": ['bottom','top'],
-                    "facets": ["language","lrt", "context", "iur"], 
+                    "facets": ["collection","language","format","classification"], 
                     "maxLengthDescription":  300,
                     "pageSize": 6,
-                    "repositoryName": "Organic.Edunet",
-                    "serviceUrl":"http://83.212.96.219:8080/glnRepo/api/ariadne/restp"
-                
-                    
+                    "repositoryName": "NE_Repo",
+                    "serviceUrl":"http://83.212.96.169:8080/ecloud/api/ariadne/restp"
+     
                 }
             }
             </script>
