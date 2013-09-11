@@ -50,22 +50,11 @@ var FACET_LABELS = {};
 
 var SELECTED_LANGUAGE = "en";
 
-FACET_LABELS['provider'] = 'Providers';
-FACET_LABELS['collection'] = 'Collections';
 FACET_LABELS['language'] = 'Language';
-FACET_LABELS['format'] = 'Media type';
-FACET_LABELS['keyword'] = 'By Tags';
-FACET_LABELS['context'] = 'Educational level';
-FACET_LABELS['lrt'] = 'Resource Type';
-FACET_LABELS['rights'] = 'Rights';
-FACET_LABELS['lom.rights.copyrightandotherrestrictions.string'] = 'Licences';
-FACET_LABELS['tagr'] = 'Typical Range';
-FACET_LABELS['iur'] = 'Intended User Role';
-FACET_LABELS['il'] = 'Interactivity type level';
-FACET_LABELS['classification'] = 'Classification';
-FACET_LABELS['temporal'] = 'Temporal Coverage';
-FACET_LABELS['spatial']= 'Spatial Coverage';
-FACET_LABELS['common'] = 'Common Name';
+FACET_LABELS['contentType'] = 'Media Type';
+FACET_LABELS['date'] = 'Year';
+FACET_LABELS['licenceUri'] = 'Copyright';
+FACET_LABELS['provider'] = 'Collections';
 
 //FACET_LABELS['contribute'] = 'Contributor'; // added in order to check the field
 
@@ -112,6 +101,12 @@ langName['sv']= 'Swedish';
 langName['ell']= 'Greek';
 langName ['lat'] = 'Latin';
 langName['rus'] = 'Russian';
+
+
+langName['cs']= 'Czech';
+langName['pl']= 'Polish';
+langName ['hu'] = 'Hungarian';
+langName['n/a'] = 'Undefined';
 
 
 google.load("language", "1");
@@ -560,24 +555,42 @@ result.metadata.each(function(item,index){
                   }
                   
                   
-                  
-                  for(i=0,tmpSize=item.description.length;i<tmpSize;i++)
+/*                   description */
+                  if (item.description instanceof Object == false) 
                   {
-                  if(item.description[i].lang==SELECTED_LANGUAGE)
-                  item.thisDescription=item.description[i];
+	                  if(item.description!=undefined && item.description.description_0!=undefined)
+	                  {
+		                  item.thisDescription=item.description.description_0;
+	                  }
                   }
-                  
-                  if(item.thisDescription==undefined){item.thisDescription = " There is no defined description for this language";}
-                  
-                  
-                  
-                  for(i=0,tmpSize=item.title.length;i<tmpSize;i++)
+                  else
                   {
-                  if(item.title[i].lang==SELECTED_LANGUAGE)
-                  item.thisTitle=item.title[i];
+	                  if(item.description!=undefined && item.description[0]!=undefined)
+	                  {
+		                  item.thisDescription=item.description[0].value;
+	                  }
+	                  
                   }
+                  if(item.thisDescription==undefined){item.thisDescription = " There is no defined description";}
                   
-                  if(item.thisTitle==undefined){item.thisTitle = " There is no defined title for this language";}
+/*                   title */
+                  if (item.alternative instanceof Object == false) 
+                  {
+	                  if(item.alternative!=undefined)
+	                  {
+		                  item.thisTitle=item.alternative;
+	                  }
+                  }
+                  else
+                  {
+	                  if(item.alternative!=undefined && item.alternative[0]!=undefined)
+	                  {
+		                  item.thisTitle=item.alternative[0].value;
+	                  }
+	                  
+                  }
+                  if(item.thisTitle==undefined){item.thisTitle = " There is no defined description";}
+                  
                   
                   
                   
@@ -823,45 +836,21 @@ Jaml.register('result', function(data){
            }//end for
            }//end if
            
-           //title
-           var thisTitle = "undefined";
-           if(data.title!=undefined)
-           {
-           thisTitle=data.title[0].value;
-           for(var i=0 , length=data.title.length; i<length;i++)
-           {
-           if(data.title[i].lang=='en'){
-           thisTitle = data.title[i].value
-           }//end lang check
+
            
-           }//end for
-           }//end if
-           
-           //description
-           var thisDescription = "undefined";
-           if(data.description!=undefined)
-           {
-           thisDescription=data.description[0].value;
-           for(var i=0 , length=data.description.length; i<length;i++)
-           {
-           if(data.description[i].lang=='en'){
-           thisDescription = data.description[i].value
-           }//end lang check
-           
-           }//end for
-           }//end if
-           
+                      
            var thisRights = data.licenseUri;
            if(data.licenseUri==undefined){thisRights == "undefined";}
            
            var thisRights2 = data.rights;
            if(data.rights==undefined){thisRights2 == "undefined";}
            
+           
            article({class:'item-intro '+odd},
                    header(
                           h2(//img({src:imgThumb}),
-                             a({href:"item.html?id="+data.id,title: data.title, target: '_blank'},data.title)),
-                          section(p({cls:'item-intro-desc'}, data.description),
+                             a({href:"item.html?id="+data.id, title:data.thisTitle, target:'_blank'},data.thisTtitle)),
+                          section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatleft'},
                                             div({cls:'line keywords'}, span("Keywords:"), keywordsToEmbed)),
@@ -905,45 +894,18 @@ Jaml.register('resultwithoutkeywords', function(data){
            
            
            var imgThumb = data.format;
+/*
            if(data.contentType[0].toUpperCase() == 'IMAGE')
            {
            imgThumb = data.objectUri[0];
            }
-           
-           //title
-           var thisTitle = "undefined";
-           if(data.title!=undefined)
-           {
-           thisTitle=data.title[0].value;
-           for(var i=0 , length=data.title.length; i<length;i++)
-           {
-           if(data.title[i].lang=='en'){
-           thisTitle = data.title[i].value
-           }//end lang check
-           
-           }//end for
-           }//end if
-           
-           //description
-           var thisDescription = "undefined";
-           if(data.description!=undefined)
-           {
-           thisDescription=data.description[0].value;
-           for(var i=0 , length=data.description.length; i<length;i++)
-           {
-           if(data.description[i].lang=='en'){
-           thisDescription = data.description[i].value
-           }//end lang check
-           
-           }//end for
-           }//end if
-           
-           
+*/
+                              
            article({class:'item-intro ' +odd },
                    header(
                           h2(img({src:imgThumb}),
-                             a({href:"item.html?id="+data.id, title: thisTitle, target: '_blank'},thisTitle)),
-                          section(p({cls:'item-intro-desc'}, thisDescription),
+                             a({href:"item.html?id="+data.id, title:data.thisTitle, target:'_blank'},data.thisTitle)),
+                          section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatright'},
                                             div({cls:'line alignright'}, a({href:"item.html?id="+data.id, cls:'moreinfo'}, "More Info")))))))});
@@ -957,15 +919,8 @@ Jaml.register('resultwithoutkeywords', function(data){
 
 Jaml.register('rbcriteria', function(data) //rest facets
            {
-           
-           
-           //###
-          // alert(data.val);
-           
-           //removing HNHM from facets
+        
            var label = data.val;
-           if(data.val.indexOf('HNHM')!=-1){
-           label = data.val.split('HNHM')[1];}
            
            a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick:"toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val,parent: data.field})}, span(label), span({cls:'total'}, data.count));
            
@@ -975,10 +930,6 @@ Jaml.register('rbcriteria', function(data) //rest facets
 
 Jaml.register('rbcriteria2', function(data) //language facet
            {
-           
-           
-           
-           
            
            a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick: "toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val, parent: data.field})}, span(langName[data.val]), span({cls:'total'}, data.count ));
            

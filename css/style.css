@@ -78,7 +78,7 @@ footer div a{
 }
 
 #search{
-	height:100px;
+	height:70px;
 }
 .form-wrapper {
     width: 450px;
@@ -260,7 +260,7 @@ footer div a{
 	height:0px;
 }
 .listing{
-	width:700px;
+	width:760px;
 	float:right;
 }
 
@@ -555,13 +555,15 @@ footer div a{
 }
 
 #right_sidebar ul li{
-	margin:0px;
+	margin:12px 0px;
 	padding:0px;
 	list-style: none;
+	border-bottom:solid 1px rgba(0,0,0,0.1);
 }
 
 /* Resource actions */
 #resource_actions{
+	padding-top:20px;
 	width:100%;
 	text-align: center;
 }

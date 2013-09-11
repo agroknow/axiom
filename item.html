@@ -4,9 +4,21 @@
 	<title>Group of History and Philosophy of Logic, Semantics and Axiomatics</title>
 	
 	<link rel="stylesheet" href="css/style.css" />
+	
+	<script type="text/javascript" src="js/view_item.js"></script>
+	
+    <script type="text/javascript">
+    function getItem()
+    {
+/*      getItemJSONP(location.search.split(":").pop()); */
+		getItemJSONP(location.search.split("=")[1]); */
+    }
+    </script>
+    
+    
 </head>		
 
-<body>
+<body onload="getItem()">
 
 <div class="logo">
 	<img src="images/ERC.jpg">
@@ -48,30 +60,25 @@
 			<h2><span>More Info</span></h2>
 			 <ul>
                 <li >
-                    <h3 class="sidebar_titles">Language:</h3>
-                    <span id="itemLanguage"></span>
-                </li>
-                <li >
-                    <h3 class="sidebar_titles">Type:</h3>
-                    <span id="itemResourceType"></span>
-                </li>
-                <li >
-                    <h3 class="sidebar_titles">Creator:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Provider:</h3>
+                    <span id="provider"></span>
                 </li>
                 <li >
                     <h3 class="sidebar_titles">Data Provider:</h3>
-                    <span id="itemResourceType"></span>
+                    <span id="data_provider"></span>
                 </li>
                 <li >
-                    <h3 class="sidebar_titles">Rights:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Language:</h3>
+                    <span id="language"></span>
                 </li>
                 <li >
-                    <h3 class="sidebar_titles">Tags:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Media Type:</h3>
+                    <span id="media_type"></span>
                 </li>
-              
+                <li >
+                    <h3 class="sidebar_titles">Date:</h3>
+                    <span id="date"></span>
+                </li>        
             </ul>
 			</section>
 		<!-- /More Info -->
@@ -89,27 +96,31 @@
                 </li>
                 <li >
                     <h3 class="sidebar_titles">Description:</h3>
-                    <span id="itemResourceType"></span>
+                    <span id="title"></span>
                 </li>
                 <li >
-                    <h3 class="sidebar_titles">Date:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Description:</h3>
+                    <span id="description"></span>
                 </li>
                 <li >
-                    <h3 class="sidebar_titles">Geographic Coverage:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Creator:</h3>
+                    <span id="creator"></span>
                 </li>
                 <li >
-                    <h3 class="sidebar_titles">Identifier:</h3>
-                    <span id="itemResourceType"></span>
-                </li>
-                <li >
-                    <h3 class="sidebar_titles">Publisher:</h3>
-                    <span id="itemResourceType"></span>
+                    <h3 class="sidebar_titles">Subject:</h3>
+                    <span id="subject"></span>
                 </li>
                 <li >
                     <h3 class="sidebar_titles">Period:</h3>
-                    <span id="itemResourceType"></span>
+                    <span id="period"></span>
+                </li>
+                <li >
+                    <h3 class="sidebar_titles">Publisher:</h3>
+                    <span id="publisher"></span>
+                </li>
+                <li >
+                    <h3 class="sidebar_titles">Rights:</h3>
+                    <span id="rights"></span>
                 </li>
               
             </ul>
@@ -123,9 +134,9 @@
 	<!-- More Info -->
 			<h4>Related Resources in Mendeley</h4>
 			<ul>
-				<li>Item One</li>
-				<li>Item Two</li>
-				<li>Item Three</li>
+				<li><a href="http://www.mendeley.com/research/immanuel-kant-on-intellectual-property-1/" target="_blank">Immanuel Kant on Intellectual Property</a></li>
+				<li><a href="www.mendeley.com/research/intentionality-formal-semantics-twardowski-tarski/" target="_blank">From Intentionality to Formal Semantics (From Twardowski to Tarski)</a></li>
+				<li><a href="http://www.mendeley.com/catalog/analytic-synthetic-distinction-classical-model-science-kant-bolzano-frege/" target="_blank">The analytic-synthetic distinction and the classical model of science: Kant, Bolzano and Frege </a></li>
 			</ul>
 		<!-- /More Info -->
 	<!-- /Right Sidebar -->
@@ -140,5 +151,6 @@
 			<div><a href="http://www.ariadne-eu.org" title="Ariadne Foundation"><div><img src="images/ariadne.png"></div></a></div>
 		</footer>
     	
+    	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 </body>
 </html>
