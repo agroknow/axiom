@@ -138,7 +138,15 @@ function getItemJSONP(itemID)
 	                  
                   }
                   if(record.thisTitle==undefined){record.thisTitle = " There is no defined title";}
-				  document.getElementById('title').innerHTML = record.thisTitle;
+                  if(record.contextUri!=undefined )
+                  {
+	                  document.getElementById('title').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\">"+record.thisTitle+"</a>";
+                  }
+                  else
+                  {
+	                  document.getElementById('title').innerHTML = record.thisTitle;
+                  }
+				  
                 
                 
                 /* creator */
@@ -171,6 +179,17 @@ function getItemJSONP(itemID)
                 {
                 	document.getElementById('rights').innerHTML = record.rights;
                 }
+                
+                /* bottom menu */
+                if(record.contextUri!=undefined)
+                {
+	                document.getElementById('resource_actions').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
+                }
+                else
+                {
+	                document.getElementById('resource_actions').innerHTML = "<a href=\"#\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
+                }
+                
                 //end of -success- of getItemJSONP
                 }})}
 

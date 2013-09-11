@@ -934,7 +934,7 @@ Jaml.register('rbcriteria', function(data) //rest facets
            {
         
            var label = data.val;
-           console.log(label);
+
            a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick:"toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val,parent: data.field})}, span(label), span({cls:'total'}, data.count));
            
            
