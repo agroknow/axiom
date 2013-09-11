@@ -80,7 +80,6 @@ var langName = {};
 var iter = 0;
 
 langName['n/a']='Other';
-
 langName['en']='English';
 langName['eng;']='English';
 langName['eng']='English';
@@ -103,12 +102,17 @@ langName['sv']= 'Swedish';
 langName['ell']= 'Greek';
 langName ['lat'] = 'Latin';
 langName['rus'] = 'Russian';
-
 langName['mul'] = 'Multiple languages';
 langName['cs']= 'Czech';
 langName['pl']= 'Polish';
-langName ['hu'] = 'Hungarian';
-langName['n/a'] = 'Undefined';
+langName['hu'] = 'Hungarian';
+langName['CS'] = 'Czech';
+langName['swe'] = 'Swedish';
+langName['fi'] = 'Finish';
+langName['sl'] = 'Slovenian';
+langName['sr'] = 'Serbian';
+langName['DE'] = 'German';
+
 
 
 google.load("language", "1");
@@ -139,14 +143,15 @@ function initializeFinder(){
 			var customParams = customizeFinder();
             var urlSelectedProviders = getUrlVars()["providers"];
             
-			if(customParams) {
+			if(customParams) 
+			{
                 /*limit collection|providers*/
                 if(urlSelectedProviders){
                     SELECTED_PROVIDERS = urlSelectedProviders;
                     //alert(urlSelectedProviders);
                 }
                 if (!urlSelectedProviders && customParams.selectedProviders) SELECTED_PROVIDERS = customParams.selectedProviders;
-                //alert(SELECTED_PROVIDERS);
+                
                 /*---*/
                 
 				if (customParams.serviceUrl) SERVICE_URL = customParams.serviceUrl;
@@ -375,14 +380,17 @@ function parseQueryString(initUpdate){
     
     if(!plainText.blank()){
         clauses.push({language:'VSQL',expression:plainText});
-        // add the below to github
         var lrt = getUrlVars()["lrt"];
         var key = getUrlVars()["keyword"];
         var context = getUrlVars()["context"];
         var urlSelectedProviders = getUrlVars()["providers"];
         var urlSelectedCollections = getUrlVars()["collection"];
+        var urlSelectedPhilosopher = getUrlVars()["philosopher"];
        
-        
+        if(urlSelectedPhilosopher){
+	        urlSelectedPhilosopher = urlSelectedPhilosopher.replace("#","").replace("%20", " ");
+	        clauses.push({language:'anyOf',expression:'collectionId:'+ urlSelectedPhilosopher});
+        }   
         if (lrt) {
             lrt = lrt.replace("#","").replace("%20", " ");
             clauses.push({language:'anyOf',expression:'lrt:'+ lrt});
@@ -599,7 +607,7 @@ result.metadata.each(function(item,index){
 	                  }
 	                  
                   }
-                  if(item.thisTitle==undefined){item.thisTitle = " There is no defined description";}
+                  if(item.thisTitle==undefined){item.thisTitle = " There is no defined title";}
                   
                   
                   
@@ -855,7 +863,7 @@ Jaml.register('result', function(data){
            var thisRights2 = data.rights;
            if(data.rights==undefined){thisRights2 == "undefined";}
            
-           
+           data.id = data.id.replace("http://","");
            article({class:'item-intro '+odd},
                    header(
                           h2(//img({src:imgThumb}),
@@ -910,7 +918,7 @@ Jaml.register('resultwithoutkeywords', function(data){
            imgThumb = data.objectUri[0];
            }
 */
-                              
+           data.id = data.id.replace("http://","");            
            article({class:'item-intro ' +odd },
                    header(
                           h2(img({src:imgThumb}),

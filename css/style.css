@@ -508,7 +508,9 @@ footer div a{
 
 #left_sidebar h3{
 	font-size: 14px;
+	margin-bottom: 0px;
 }
+
 
 #left_sidebar ul{
 	padding:0px;
@@ -516,7 +518,14 @@ footer div a{
 
 #left_sidebar ul li{
 	list-style: none;
+	text-align: left;
+	border-bottom:1px solid rgba(0,0,0,0.1);
 }
+#left_sidebar ul li span{
+	margin:0px;
+	padding:0px;
+}
+
 
 /*Center div in item*/
 #center{
@@ -531,6 +540,7 @@ footer div a{
 
 #center h3{
 	font-size: 14px;
+	margin-bottom: 0px;
 }
 
 #center ul{

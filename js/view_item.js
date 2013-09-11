@@ -6,6 +6,44 @@ function getItemJSONP(itemID)
     urlTemp = "http://83.212.96.169:8080/ecloud/api/ariadne/restp?json=%7B%22clause%22%3A%20%5B%7B%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22"+itemID+"%22%7D%5D%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%200%2C%20%22resultListSize%22%3A%206%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20%5B%22provider%22%2C%20%22language%22%2C%20%22format%22%2C%20%22classification%22%5D%2C%20%22idListSize%22%3A%206%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22%7D&engine=InMemory";
     //alert(urlTemp);
     
+    /*languages - to be replaced with flags*/
+    var langName = {};
+    langName['n/a']='Other';
+	langName['en']='English';
+	langName['eng;']='English';
+	langName['eng']='English';
+	langName['eng; eng']='English';
+	langName['fr']= 'French';
+	langName['fre']= 'French';
+	langName['el']= 'Greek';
+	langName['hun']= 'Hungarian';
+	langName['et']= 'Estonian';
+	langName['est']= 'Estonian';
+	langName['nl']= 'Dutch';
+	langName['ro']= 'Romanian';
+	langName['de']= 'German';
+	langName['deu']= 'German';
+	langName['tr']= 'Turkish';
+	langName['pt']= 'Portuguese';
+	langName['por']= 'Portuguese';
+	langName['es']= 'Spanish';
+	langName['sv']= 'Swedish';
+	langName['ell']= 'Greek';
+	langName ['lat'] = 'Latin';
+	langName['rus'] = 'Russian';
+	langName['mul'] = 'Multiple languages';
+	langName['cs']= 'Czech';
+	langName['pl']= 'Polish';
+	langName['hu'] = 'Hungarian';
+	langName['CS'] = 'Czech';
+	langName['swe'] = 'Swedish';
+	langName['fi'] = 'Finish';
+	langName['sl'] = 'Slovenian';
+	langName['sr'] = 'Serbian';
+	langName['DE'] = 'German';
+	/* /languages */
+	
+	
     jQuery.ajax({
                 url: urlTemp,
                 dataType: "jsonp",
@@ -24,224 +62,115 @@ function getItemJSONP(itemID)
                 record = tmp.result.metadata[0];
                 }
                 
-                //alert(thisJson);
+                console.log(thisJson);
                                 
-                //left_sidebar
+                //MORE INFO
                 
-                //-//collection
-                if(record.collectionId!=undefined){
-                if (record.collectionId.indexOf('HNHM ') != -1){
-                record.collectionId = record.collectionId.split('HNHM ')[1];
-                }
-                document.getElementById('collection').innerHTML = record.collectionId;}
-                
-                //-//classification
-                if(record.classification!=undefined){
-                var tempClassif = Object.keys(record.classification);
-                for(var i=0; i <tempClassif.length; i++)
+                /* provider */
+                if(record.provider!=undefined)
                 {
-                if(record.classification[tempClassif[i]]!=undefined){
-                jQuery('#classification').append(record.classification[tempClassif[i]] );
+                	document.getElementById('provider').innerHTML = record.provider;
+                }
                 
-                if(i!=tempClassif.length-1){ jQuery('#classification').append(", "); }
-                
-                }
-                }
-                }
-                                
-                //-//Scientific Name
-                if(record.scientificName!=undefined){
-                var tempScienName = Object.keys(record.scientificName);
-                for(var i=0; i <tempScienName.length; i++)
+                /* data_provider */
+                if(record.dataProvider!=undefined)
                 {
-                if(record.classification[tempClassif[i]]!=undefined){
-                jQuery('#scientific_name').append(record.scientificName[tempScienName[i]].value);
-                if(i!=tempScienName.length-1){ jQuery('#scientific_name').append(", "); }
+                	document.getElementById('data_provider').innerHTML = record.dataProvider;
                 }
+                
+                /* language */
+                if(record.language!=undefined)
+                {
+                	document.getElementById('language').innerHTML = langName[record.language];
                 }
-
+                
+                /* media type */
+                if(record.contentType!=undefined)
+                {
+                	document.getElementById('media_type').innerHTML = record.contentType;
+                }
+                
+                /* date */
+                if(record.date!=undefined)
+                {
+                	document.getElementById('date').innerHTML = record.date;
                 }
                                 
-                //-//Spatial Coverage
-                if(record.spatial!=undefined){
-                for(var j=0; j<record.spatial.length;j++){
-                if(record.spatial[j].value!=undefined){
-                jQuery('#spatial_coverage').append(record.spatial[j].value);
-                if(j!=record.spatial.length-1){ jQuery('#spatial_coverage').append(", "); }
-                }
+                //DESCRIPTION
+				/* Description */
+                  if (record.description instanceof Object == false) 
+                  {
+	                  if(record.description!=undefined)
+	                  {
+		                  record.thisDescription=record.description;
+	                  }
+                  }
+                  else
+                  {
+	                  if(record.description!=undefined && record.description[0]!=undefined)
+	                  {
+		                  record.thisDescription=record.description[0].value;
+		                  
+		              }
+		              if(record.description!=undefined && record.description.description_0!=undefined)
+	                  {
+		                 record.thisDescription=record.description.description_0;
+	                  }
+                  }
+                  if(record.thisDescription==undefined){
+                  record.thisDescription = " There is no defined description";}
+                  document.getElementById('description').innerHTML = record.thisDescription;
+                  
+				  /* Title */
+                  if (record.alternative instanceof Object == false) 
+                  {
+	                  if(record.alternative!=undefined)
+	                  {
+		                  record.thisTitle=record.alternative;
+	                  }
+                  }
+                  else
+                  {
+	                  if(record.alternative!=undefined && record.alternative[0]!=undefined)
+	                  {
+		                  record.thisTitle=record.alternative[0].value;
+	                  }
+	                  
+                  }
+                  if(record.thisTitle==undefined){record.thisTitle = " There is no defined title";}
+				  document.getElementById('title').innerHTML = record.thisTitle;
                 
-                }
                 
-                
-
-                }
-                                
-                //-//date created
-                
-                if(record.created!=undefined)
+                /* creator */
+                if(record.creator!=undefined)
                 {
-                jQuery('#date_created').append(record.created);
-                
-//                var testDate = Object.keys(record.created)
-//                for(var i=0;i<testDate.length;i++){
-//                jQuery('#date_created').append(record.created[testDate[i]]);
-//                if(i!=testDate.length-1){ jQuery('#date_created').append(", "); }
-//                }
-                
+                	document.getElementById('creator').innerHTML = record.creator;
                 }
-                
-                
-                
-                //-//type
-                if(record.type!=undefined){
-                var tempType = Object.keys(record.type);
-                for(var i=0; i <tempType.length; i++)
+                /* subject */
+                if(record.subject!=undefined)
                 {
-                if(record.type[tempType[i]]!=undefined){
-                jQuery('#type').append(record.type[tempType[i]].value);
-                if(i!=tempType.length-1){ jQuery('#type').append(", "); }
+                	document.getElementById('subject').innerHTML = record.subject;
                 }
-                }
-                }
-                
-                
-                //-//language
-                if(record.Languages!=undefined){
-                var tempLangs = Object.keys(record.Languages);
-                for(var i=0; i <tempLangs.length; i++)
+                /* period */
+                if(record.temporal!=undefined)
                 {
-                if(record.Languages[tempLangs[i]]!=undefined){
-                jQuery('#language').append('<span class=\"flag '+record.Languages[tempLangs[i]]+'flag\">'+record.Languages[tempLangs[i]]+'</span>');                }
+                	document.getElementById('period').innerHTML = record.temporal;
                 }
-                }
-                
-                
-                
-                //--//content-type
-                document.getElementById('media_type').innerHTML = record.contentType;
-                
-                
-                //-//-// generate_thumb
-                if(record.contentType!=undefined){
-                if(record.contentType.toUpperCase() == "IMAGE")
+                /* geograph coverage */
+                if(record.spatial!=undefined)
                 {
-                jQuery('#itemThumb').append("<a href=\""+record.thumbnailUri+"\" target=\"_blank\"><img src=\""+record.thumbnailUri+"\" /></a>");
-                }else{
-                jQuery('#itemThumb').append("<img src=\"images/no-image.gif\" />");
+                	document.getElementById('spatial').innerHTML = record.spatial;
                 }
-                }
-                
-                
-                //-------------------------------------------item description (CENTRAL BOX)
-                //-//item title
-                if(record.title){
-                var tempTitle = Object.keys(record.title);
-                for(var i=0; i<tempTitle.length;i++)
+                /* publisher */
+                if(record.publisher!=undefined)
                 {
-                if(record.title[tempTitle[i]].lang =='en'){
-                jQuery('#item_title').append('<a class="item_title_link" href=\"'+record.objectUri+'\" target=\"_blank\">'+record.title[tempTitle[i]].value+'</a>');
+                	document.getElementById('publisher').innerHTML = record.publisher;
                 }
-                }
-                }
-                
-                //-//item description
-                if(record.description!=undefined){
-                var tempDesc = Object.keys(record.description);
-                for(var i=0; i<tempTitle.length;i++)
+                /* rights */
+                if(record.rights!=undefined)
                 {
-                if(record.description[tempDesc[i]].lang =='en'){
-                jQuery('#item_description').append(record.description[tempDesc[i]].value);
+                	document.getElementById('rights').innerHTML = record.rights;
                 }
-                }
-                }
-                
-                
-                //-//item_creator
-                if(record.creator!=undefined){
-                var tempCreator = Object.keys(record.creator);
-                for(var i=0; i <tempCreator.length; i++)
-                {
-                if(record.creator[i].value!=undefined){
-                if(record.creator[i].lang='en'){
-                jQuery('#item_creator').append(record.creator[i].value);
-                if(i!=tempCreator.length-1){ jQuery('#item_creator').append(", "); }
-                }
-                }
-                }
-                }
-                
-                
-                //-//item_keywords
-                //var tempKeywords = Object.keys(record.subject);
-                if(record.subject!=undefined){
-                for(var i=0; i <record.subject.length; i++)
-                {
-                if(record.subject[i].value!=undefined && record.subject[i].lang=='en'){
-                jQuery('#item_keywords').append(record.subject[i].value);
-                if(i!=record.subject.length-1){ jQuery('#item_keywords').append(", "); }
-                
-                }
-                }
-                }
-                                
-                //-//language
-                if(record.Languages!=undefined){
-                var tempLangs = Object.keys(record.Languages);
-                for(var i=0; i <tempLangs.length; i++)
-                {
-                if(record.Languages[tempLangs[i]]!=undefined){
-                jQuery('#item_language').append('<span class=\"flag '+record.Languages[tempLangs[i]]+'flag\">'+record.Languages[tempLangs[i]]+'</span>');
-                }
-                }
-                }
-                
-                
-                //-//Copyrights
-                document.getElementById('item_copyrights').innerHTML = record.rights ;
-                
-                
-                //-//Creative Common License
-                //document.getElementById('item_common_license').innerHTML = record.licenseUri ;
-                ////
-                if(record.licenseUri!=undefined){
-                if(record.licenseUri.search("licenses/by-nc-sa")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc-sa.png"></a></nav>');
-                }
-                else if(record.licenseUri.search("licenses/by-nc-nd")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc-nd.png"></a></nav>');
-                }
-                else if(record.licenseUri.search("licenses/by-nd")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nd.png"></a></nav>');
-                }
-                else if(record.licenseUri.search("licenses/by-sa")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-sa.png"></a></nav>');
-                }
-                else if(record.licenseUri.search("licenses/by-nc")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc.png"></a></nav>');
-                }
-                else if(record.licenseUri.search("licenses/by")>=0){
-                jQuery('#item_common_license').append('<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by.png"></a></nav>');
-                
-                }
-                else{
-                jQuery('#item_common_license').append('<span>Rights: </span><nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank">'+record.licenseUri+'</a></nav>');
-                }
-                }
-                
-                ////
-                //-//Relation
-                document.getElementById('item_relation').innerHTML = "<a class=\"item_links\" href=\""+record.relation+"\" target=\"_blank\">" + record.relation + "</a>";
-                
-                
-                ///----Access to the resource
-                
-                if(record.objectUri!==undefined)
-                {
-                jQuery('#itemAccess').append('<a target="_blank" href="'+record.objectUri+'" class="access  secondary">Access to the resource</a>');
-                }
-                
-                
-                
                 //end of -success- of getItemJSONP
                 }})}
 
