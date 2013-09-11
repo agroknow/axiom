@@ -55,6 +55,8 @@ FACET_LABELS['contentType'] = 'Media Type';
 FACET_LABELS['date'] = 'Year';
 FACET_LABELS['licenceUri'] = 'Copyright';
 FACET_LABELS['provider'] = 'Collections';
+FACET_LABELS['collectionId'] = 'Philosophers';
+
 
 //FACET_LABELS['contribute'] = 'Contributor'; // added in order to check the field
 
@@ -102,7 +104,7 @@ langName['ell']= 'Greek';
 langName ['lat'] = 'Latin';
 langName['rus'] = 'Russian';
 
-
+langName['mul'] = 'Multiple languages';
 langName['cs']= 'Czech';
 langName['pl']= 'Polish';
 langName ['hu'] = 'Hungarian';
@@ -526,7 +528,8 @@ result.metadata.each(function(item,index){
                   
                   console.log(item);
                   
-                  if(item.format!=undefined && item.format[0]!=undefined){
+                  if(item.format!=undefined && item.format[0]!=undefined)
+                  {
                   if (item.format.indexOf('pdf') != -1)
                   item.format='images/icons/pdf.png';
                   else if (item.format.indexOf('powerpoint') != -1)
@@ -550,17 +553,20 @@ result.metadata.each(function(item,index){
                   else if ((item.format.indexOf('application')!= -1))
                   item.format='images/icons/application.png';
                   else
-                  item.format='images/icons/application.png';
-                  
+                  	item.format='images/icons/application.png';
+                  }
+                  else
+                  {
+                  	item.format='images/icons/application.png';	                  
                   }
                   
                   
-/*                   description */
+				  /* Description */
                   if (item.description instanceof Object == false) 
                   {
-	                  if(item.description!=undefined && item.description.description_0!=undefined)
+	                  if(item.description!=undefined)
 	                  {
-		                  item.thisDescription=item.description.description_0;
+		                  item.thisDescription=item.description;
 	                  }
                   }
                   else
@@ -568,12 +574,16 @@ result.metadata.each(function(item,index){
 	                  if(item.description!=undefined && item.description[0]!=undefined)
 	                  {
 		                  item.thisDescription=item.description[0].value;
+		                  
+		              }
+		              if(item.description!=undefined && item.description.description_0!=undefined)
+	                  {
+		                 item.thisDescription=item.description.description_0;
 	                  }
-	                  
                   }
                   if(item.thisDescription==undefined){item.thisDescription = " There is no defined description";}
                   
-/*                   title */
+				  /* Title */
                   if (item.alternative instanceof Object == false) 
                   {
 	                  if(item.alternative!=undefined)
@@ -921,6 +931,7 @@ Jaml.register('rbcriteria', function(data) //rest facets
            {
         
            var label = data.val;
+           label = label.replace("http://semium.org/time/", "");
            
            a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick:"toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val,parent: data.field})}, span(label), span({cls:'total'}, data.count));
            
