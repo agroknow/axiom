@@ -385,12 +385,7 @@ function parseQueryString(initUpdate){
         var context = getUrlVars()["context"];
         var urlSelectedProviders = getUrlVars()["providers"];
         var urlSelectedCollections = getUrlVars()["collection"];
-        var urlSelectedPhilosopher = getUrlVars()["philosopher"];
        
-        if(urlSelectedPhilosopher){
-	        urlSelectedPhilosopher = urlSelectedPhilosopher.replace("#","").replace("%20", " ");
-	        clauses.push({language:'anyOf',expression:'collectionId:'+ urlSelectedPhilosopher});
-        }   
         if (lrt) {
             lrt = lrt.replace("#","").replace("%20", " ");
             clauses.push({language:'anyOf',expression:'lrt:'+ lrt});
@@ -939,8 +934,7 @@ Jaml.register('rbcriteria', function(data) //rest facets
            {
         
            var label = data.val;
-           label = label.replace("http://semium.org/time/", "");
-           
+           console.log(label);
            a({href:'#', id: data.field + ':' + data.val, title: data.val, onclick:"toggleFacetValue('#{id}','#{parent}')".interpolate({id: data.field + ':' + data.val,parent: data.field})}, span(label), span({cls:'total'}, data.count));
            
            
