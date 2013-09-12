@@ -868,7 +868,7 @@ Jaml.register('result', function(data){
            article({class:'item-intro '+odd},
                    header(
                           h2(//img({src:imgThumb}),
-                             a({href:"item.html?id="+data.id, title:data.thisTitle, target:'_blank'},data.thisTtitle)),
+                             a({href:"item.html?id="+this_id, title:data.thisTitle, target:'_blank'},data.thisTtitle)),
                           section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatleft'},
@@ -923,7 +923,7 @@ Jaml.register('resultwithoutkeywords', function(data){
            article({class:'item-intro ' +odd },
                    header(
                           h2(img({src:imgThumb}),
-                             a({href:"item.html?id="+data.id, title:data.thisTitle, target:'_blank'},data.thisTitle)),
+                             a({href:"item.html?id="+this_id, title:data.thisTitle, target:'_blank'},data.thisTitle)),
                           section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatright'},
