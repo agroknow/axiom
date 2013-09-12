@@ -154,20 +154,41 @@ function getItemJSONP(itemID)
               document.getElementById('title').innerHTML = record.thisTitle;
           }
 		  
-        
-        
         /* creator */
-        if(record.creator!=undefined)
-        {
-        	document.getElementById('creator').innerHTML = record.creator;
-        }
-        
-        
-        
-        
-        
-        
-        
+         var this_creator="no creators are defined";
+        if (record.creator instanceof Object == false) 
+          {
+              if(record.creator!=undefined)
+              {
+                  this_creator = record.creator;
+              }
+          }
+          else
+          {
+              if(record.creator!=undefined && record.creator.length > 0 )
+              {
+              	this_creator="";
+              	for(var i=0, length = record.creator.length; i<length; i++)
+              	{
+              		if(i=0){this_creator = record.creator[i];}
+              		else{this_creator = this_creator+", "+record.creator[i];}
+              	}
+              }
+              
+              var temp_creator = Object.keys(record.creator)
+              if(temp_creator.length>0)
+              {
+              	this_creator="";
+	            for(var i=0, length = temp_creator.length; i<length; i++)
+              	{
+              		this_creator = this_creator+", "+record.creator[temp_creator[i]];
+              	}
+              }
+              console.log(Object.keys(record.creator));
+          }
+          
+		  document.getElementById('creator').innerHTML = this_creator ;
+ 
         /* subject */
         var this_subject="no subjects are defined";
         if (record.subject instanceof Object == false) 
@@ -203,17 +224,6 @@ function getItemJSONP(itemID)
           
 		  document.getElementById('subject').innerHTML = this_subject ;
        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         /* period */
         if(record.temporal!=undefined)
         {
@@ -229,12 +239,46 @@ function getItemJSONP(itemID)
         {
         	document.getElementById('publisher').innerHTML = record.publisher;
         }
-        /* rights */
-        if(record.rights!=undefined)
-        {
-        	document.getElementById('rights').innerHTML = record.rights;
-        }
         
+        
+        
+        
+        
+        /* rights */         
+        var this_rights="no rights are defined";
+        if (record.rights instanceof Object == false) 
+          {
+              if(record.rights!=undefined)
+              {
+                  this_rights = record.rights;
+              }
+          }
+          else
+          {
+              if(record.rights!=undefined && record.rights.length > 0 )
+              {
+              	this_rights="";
+              	for(var i=0, length = record.rights.length; i<length; i++)
+              	{
+              		if(i=0){this_rights = record.rights[i];}
+              		else{this_rights = this_rights+", "+record.rights[i];}
+              	}
+              }
+              
+              var temp_rights = Object.keys(record.rights)
+              if(temp_rights.length>0)
+              {
+              	this_rights="";
+	            for(var i=0, length = temp_rights.length; i<length; i++)
+              	{
+              		this_rights = this_rights+", "+record.rights[temp_rights[i]];
+              	}
+              }
+              console.log(Object.keys(record.rights));
+          }
+          
+		  document.getElementById('rights').innerHTML = this_rights ;
+ 
         /*common rights */
         if(record.licenseUri!=undefined)
         {
