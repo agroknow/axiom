@@ -112,6 +112,8 @@ langName['fi'] = 'Finish';
 langName['sl'] = 'Slovenian';
 langName['sr'] = 'Serbian';
 langName['DE'] = 'German';
+langName['IT'] = 'Italian';
+langName['ET'] = 'Estonian';
 
 
 

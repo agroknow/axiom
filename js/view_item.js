@@ -29,7 +29,7 @@ function getItemJSONP(itemID)
 	langName['es']= 'Spanish';
 	langName['sv']= 'Swedish';
 	langName['ell']= 'Greek';
-	langName ['lat'] = 'Latin';
+	langName['lat'] = 'Latin';
 	langName['rus'] = 'Russian';
 	langName['mul'] = 'Multiple languages';
 	langName['cs']= 'Czech';
@@ -41,6 +41,8 @@ function getItemJSONP(itemID)
 	langName['sl'] = 'Slovenian';
 	langName['sr'] = 'Serbian';
 	langName['DE'] = 'German';
+	langName['IT'] = 'Italian';
+	langName['ET'] = 'Estonian';
 	/* /languages */
 	
 	
