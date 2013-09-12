@@ -159,11 +159,59 @@ function getItemJSONP(itemID)
         {
         	document.getElementById('creator').innerHTML = record.creator;
         }
+        
+        
+        
+        
+        
+        
+        
         /* subject */
-        if(record.subject!=undefined)
-        {
-        	document.getElementById('subject').innerHTML = record.subject;
-        }
+        var this_subject="no subjects are defined";
+        if (record.subject instanceof Object == false) 
+          {
+              if(record.subject!=undefined)
+              {
+                  this_subject = record.subject;
+              }
+          }
+          else
+          {
+              if(record.subject!=undefined && record.subject.length > 0 )
+              {
+              	this_subject="";
+              	for(var i=0, length = record.subject.length; i<length; i++)
+              	{
+              		if(i=0){this_subject = record.subject[i];}
+              		else{this_subject = this_subject+", "+record.subject[i];}
+              	}
+              }
+              
+              var temp_subject = Object.keys(record.subject)
+              if(temp_subject.length>0)
+              {
+              	this_subject="";
+	            for(var i=0, length = temp_subject.length; i<length; i++)
+              	{
+              		this_subject = this_subject+", "+record.subject[temp_subject[i]];
+              	}
+              }
+              console.log(Object.keys(record.subject));
+          }
+          
+		  document.getElementById('subject').innerHTML = this_subject ;
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /* period */
         if(record.temporal!=undefined)
         {
