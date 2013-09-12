@@ -135,9 +135,14 @@ function getItemJSONP(itemID)
               {
                   record.thisTitle=record.alternative[0].value;
               }
-              
+              if(record.alternative!=undefined && record.alternative.alternative_0!=undefined)
+              {
+                  record.thisTitle=record.alternative.alternative_0;
+              }
           }
           if(record.thisTitle==undefined){record.thisTitle = " There is no defined title";}
+          
+		  /*title's link */
           if(record.contextUri!=undefined )
           {
               document.getElementById('title').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\">"+record.thisTitle+"</a>";

@@ -600,6 +600,10 @@ result.metadata.each(function(item,index){
 	                  {
 		                  item.thisTitle=item.alternative[0].value;
 	                  }
+	                  if(item.alternative!=undefined && item.alternative.alternative_0!=undefined)
+	                  {
+		                  item.thisTitle=item.alternative.alternative_0;
+	                  }
 	                  
                   }
                   if(item.thisTitle==undefined){item.thisTitle = " There is no defined title";}

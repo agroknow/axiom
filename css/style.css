@@ -28,6 +28,18 @@ a:hover {text-decoration: none; color:#3B83BD;}
 	
 }
 
+#breadcrump{
+	padding-left:70px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+#breadcrump .active{
+	color:#3B83BD;
+	font-weight:bold;
+}
+
+
 .clearfix{
 	width:100%;
 	display: inline-block;
