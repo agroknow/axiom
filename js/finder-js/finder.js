@@ -858,7 +858,7 @@ Jaml.register('result', function(data){
            var thisRights2 = data.rights;
            if(data.rights==undefined){thisRights2 == "undefined";}
            
-           data.id = data.id.replace("http://","");
+           var this_id = data.identifier.replace("http://","");
            article({class:'item-intro '+odd},
                    header(
                           h2(//img({src:imgThumb}),
@@ -870,7 +870,7 @@ Jaml.register('result', function(data){
                                         div({cls:'language'}, span("Creative commons licence:"), thisRights),
                                         div({cls:'language'}, span("Rights:"), thisRights2),
                                         div({cls:'floatright'},
-                                            div({cls:'line alignright'}, a({href:"item.html?id="+data.id, cls:'moreinfo'}, "More Info")))))))
+                                            div({cls:'line alignright'}, a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))
            });
 
 
@@ -913,7 +913,7 @@ Jaml.register('resultwithoutkeywords', function(data){
            imgThumb = data.objectUri[0];
            }
 */
-           data.id = data.id.replace("http://","");            
+           var this_id = data.identifier.replace("http://","");            
            article({class:'item-intro ' +odd },
                    header(
                           h2(img({src:imgThumb}),
@@ -921,7 +921,7 @@ Jaml.register('resultwithoutkeywords', function(data){
                           section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatright'},
-                                            div({cls:'line alignright'}, a({href:"item.html?id="+data.id, cls:'moreinfo'}, "More Info")))))))});
+                                            div({cls:'line alignright'}, a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))});
 
 
 

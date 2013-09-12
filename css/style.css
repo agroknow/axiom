@@ -264,6 +264,16 @@ footer div a{
 	float:right;
 }
 
+#summary{
+	font-size:14px;
+	font-weight: bold;
+}
+
+#search_status{
+	font-size:12px;
+	padding-bottom: 15px;
+}
+
 .moreinfo {
 	
 	margin-right:9px;

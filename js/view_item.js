@@ -45,153 +45,191 @@ function getItemJSONP(itemID)
 	
 	
     jQuery.ajax({
-                url: urlTemp,
-                dataType: "jsonp",
-                success: function(data)
-                {
-                
-                
-                
-                //parse array and create an JS Object Array
-                //every item is a JSON
-                var thisJson = JSON.stringify(data);
-                var tmp = JSON.parse(thisJson);
-            
-                var record = "";
-                if(tmp.result.metadata[0]!=undefined){
-                record = tmp.result.metadata[0];
-                }
-                
-                console.log(thisJson);
-                                
-                //MORE INFO
-                
-                /* provider */
-                if(record.provider!=undefined)
-                {
-                	document.getElementById('provider').innerHTML = record.provider;
-                }
-                
-                /* data_provider */
-                if(record.dataProvider!=undefined)
-                {
-                	document.getElementById('data_provider').innerHTML = record.dataProvider;
-                }
-                
-                /* language */
-                if(record.language!=undefined)
-                {
-                	document.getElementById('language').innerHTML = langName[record.language];
-                }
-                
-                /* media type */
-                if(record.contentType!=undefined)
-                {
-                	document.getElementById('media_type').innerHTML = record.contentType;
-                }
-                
-                /* date */
-                if(record.date!=undefined)
-                {
-                	document.getElementById('date').innerHTML = record.date;
-                }
-                                
-                //DESCRIPTION
-				/* Description */
-                  if (record.description instanceof Object == false) 
-                  {
-	                  if(record.description!=undefined)
-	                  {
-		                  record.thisDescription=record.description;
-	                  }
-                  }
-                  else
-                  {
-	                  if(record.description!=undefined && record.description[0]!=undefined)
-	                  {
-		                  record.thisDescription=record.description[0].value;
-		                  
-		              }
-		              if(record.description!=undefined && record.description.description_0!=undefined)
-	                  {
-		                 record.thisDescription=record.description.description_0;
-	                  }
-                  }
-                  if(record.thisDescription==undefined){
-                  record.thisDescription = " There is no defined description";}
-                  document.getElementById('description').innerHTML = record.thisDescription;
+        url: urlTemp,
+        dataType: "jsonp",
+        success: function(data)
+        {
+        
+        
+        
+        //parse array and create an JS Object Array
+        //every item is a JSON
+        var thisJson = JSON.stringify(data);
+        var tmp = JSON.parse(thisJson);
+    
+        var record = "";
+        if(tmp.result.metadata[0]!=undefined){
+        record = tmp.result.metadata[0];
+        }
+        
+        console.log(tmp);
+                        
+        //MORE INFO
+        
+        /* provider */
+        if(record.provider!=undefined)
+        {
+        	document.getElementById('provider').innerHTML = record.provider;
+        }
+        
+        /* data_provider */
+        if(record.dataProvider!=undefined)
+        {
+        	document.getElementById('data_provider').innerHTML = record.dataProvider;
+        }
+        
+        /* language */
+        if(record.language!=undefined)
+        {
+        	document.getElementById('language').innerHTML = langName[record.language];
+        }
+        
+        /* media type */
+        if(record.contentType!=undefined)
+        {
+        	document.getElementById('media_type').innerHTML = record.contentType;
+        }
+        
+        /* date */
+        if(record.date!=undefined)
+        {
+        	document.getElementById('date').innerHTML = record.date;
+        }
+                        
+        //DESCRIPTION
+		/* Description */
+          if (record.description instanceof Object == false) 
+          {
+              if(record.description!=undefined)
+              {
+                  record.thisDescription=record.description;
+              }
+          }
+          else
+          {
+              if(record.description!=undefined && record.description[0]!=undefined)
+              {
+                  record.thisDescription=record.description[0].value;
                   
-				  /* Title */
-                  if (record.alternative instanceof Object == false) 
-                  {
-	                  if(record.alternative!=undefined)
-	                  {
-		                  record.thisTitle=record.alternative;
-	                  }
-                  }
-                  else
-                  {
-	                  if(record.alternative!=undefined && record.alternative[0]!=undefined)
-	                  {
-		                  record.thisTitle=record.alternative[0].value;
-	                  }
-	                  
-                  }
-                  if(record.thisTitle==undefined){record.thisTitle = " There is no defined title";}
-                  if(record.contextUri!=undefined )
-                  {
-	                  document.getElementById('title').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\">"+record.thisTitle+"</a>";
-                  }
-                  else
-                  {
-	                  document.getElementById('title').innerHTML = record.thisTitle;
-                  }
-				  
-                
-                
-                /* creator */
-                if(record.creator!=undefined)
-                {
-                	document.getElementById('creator').innerHTML = record.creator;
-                }
-                /* subject */
-                if(record.subject!=undefined)
-                {
-                	document.getElementById('subject').innerHTML = record.subject;
-                }
-                /* period */
-                if(record.temporal!=undefined)
-                {
-                	document.getElementById('period').innerHTML = record.temporal;
-                }
-                /* geograph coverage */
-                if(record.spatial!=undefined)
-                {
-                	document.getElementById('spatial').innerHTML = record.spatial;
-                }
-                /* publisher */
-                if(record.publisher!=undefined)
-                {
-                	document.getElementById('publisher').innerHTML = record.publisher;
-                }
-                /* rights */
-                if(record.rights!=undefined)
-                {
-                	document.getElementById('rights').innerHTML = record.rights;
-                }
-                
-                /* bottom menu */
-                if(record.contextUri!=undefined)
-                {
-	                document.getElementById('resource_actions').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
-                }
-                else
-                {
-	                document.getElementById('resource_actions').innerHTML = "<a href=\"#\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
-                }
-                
-                //end of -success- of getItemJSONP
-                }})}
+              }
+              if(record.description!=undefined && record.description.description_0!=undefined)
+              {
+                 record.thisDescription=record.description.description_0;
+              }
+          }
+          if(record.thisDescription==undefined){
+          record.thisDescription = " There is no defined description";}
+          document.getElementById('description').innerHTML = record.thisDescription;
+          
+		  /* Title */
+          if (record.alternative instanceof Object == false) 
+          {
+              if(record.alternative!=undefined)
+              {
+                  record.thisTitle=record.alternative;
+              }
+          }
+          else
+          {
+              if(record.alternative!=undefined && record.alternative[0]!=undefined)
+              {
+                  record.thisTitle=record.alternative[0].value;
+              }
+              
+          }
+          if(record.thisTitle==undefined){record.thisTitle = " There is no defined title";}
+          if(record.contextUri!=undefined )
+          {
+              document.getElementById('title').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\">"+record.thisTitle+"</a>";
+          }
+          else
+          {
+              document.getElementById('title').innerHTML = record.thisTitle;
+          }
+		  
+        
+        
+        /* creator */
+        if(record.creator!=undefined)
+        {
+        	document.getElementById('creator').innerHTML = record.creator;
+        }
+        /* subject */
+        if(record.subject!=undefined)
+        {
+        	document.getElementById('subject').innerHTML = record.subject;
+        }
+        /* period */
+        if(record.temporal!=undefined)
+        {
+        	document.getElementById('period').innerHTML = record.temporal;
+        }
+        /* geograph coverage */
+        if(record.spatial!=undefined)
+        {
+        	document.getElementById('spatial').innerHTML = record.spatial;
+        }
+        /* publisher */
+        if(record.publisher!=undefined)
+        {
+        	document.getElementById('publisher').innerHTML = record.publisher;
+        }
+        /* rights */
+        if(record.rights!=undefined)
+        {
+        	document.getElementById('rights').innerHTML = record.rights;
+        }
+        
+        /*common rights */
+        if(record.licenseUri!=undefined)
+        {
+        	var common_rights = record.licenseUri;
+            if(record.licenseUri.search("licenses/by-nc-sa")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc-sa.png"></a></nav>';
+            }
+            else if(record.licenseUri.search("licenses/by-nc-nd")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc-nd.png"></a></nav>';
+            }
+            else if(record.licenseUri.search("licenses/by-nd")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nd.png"></a></nav>';
+            }
+            else if(record.licenseUri.search("licenses/by-sa")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-sa.png"></a></nav>';
+            }
+            else if(record.licenseUri.search("licenses/by-nc")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by-nc.png"></a></nav>';
+            }
+            else if(record.licenseUri.search("licenses/by")>=0)
+            {
+            	common_rights = '<nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank"><img style="display:inline;" src="images/cc/cc-by.png"></a></nav>';
+            
+            }
+            else
+            {
+            	common_rights = '<span>Rights: </span><nav  class="itemRights"><a href="'+record.licenseUri+'" class="secondary" target="_blank">'+record.licenseUri+'</a></nav>';
+            }
+            
+            
+            document.getElementById('creative_commons').innerHTML = common_rights;
+        }
+        
+        /* bottom menu */
+        if(record.contextUri!=undefined)
+        {
+            document.getElementById('resource_actions').innerHTML = "<a href=\""+record.contextUri+"\" target=\"_blank\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
+        }
+        else
+        {
+            document.getElementById('resource_actions').innerHTML = "<a href=\"#\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
+        }
+        
+        //end of -success- of getItemJSONP
+        }})}
 
 
 // ADD THE LINK TO THE BANNER IMAGES
