@@ -291,16 +291,24 @@ footer div a{
 	margin-right:9px;
 	display:inline-block;
 	line-height:18px;
-	font-size:12px;
-	padding:0px 3px 0px 3px;
+	font-size:1em;
+	padding:4px 3px;
     color:white;
     text-decoration: none;
+    float:right;
 
 }
 
 .moreinfo a:hover
 {
 	color: #8b390f;
+}
+
+.item-intro-left-link
+{
+	float:left;
+	font-size: 0.8em;
+	margin-left: 10px;
 }
 
 .item-intro {
@@ -322,8 +330,10 @@ footer div a{
 	margin-bottom: 0.5em;
 }
 
-
-
+.listing-item-title
+{
+	font-size: 0.9em;
+}
 
 /* PAGINATION */
 #pagination_top

@@ -699,32 +699,31 @@ result.facets.each(function(item,index){
                 if(element && facetExpressions.get(fld) == undefined){
                 element.update('');
                 if(item.numbers != undefined){
-                item.numbers.each(function(it2,idx2){
-                                  if (facetHasNoLimit || limitValues.indexOf(it2.val) >= 0) {
-                                  
-                                  
-                                  it2.field = fld;
-                                  
-                                  it2.val=it2.val.replace(/\'/g, "&#34;");
-                                                          it2.count = formatInteger(it2.count,THOUSAND_SEP);
-                                                          //element.insert(Jaml.render('rbcriteria',it2));
-                                                          if (fld!= "language")
-                                                          element.insert(Jaml.render('rbcriteria',it2));
-                                                          
-                                                          else
-                                                          // check first if langName[it2.val] exists already in rbList
-                                                          {
-                                                          checkLang(it2.val,it2.count);
-                                                          
-                                                          if (CHECK==0)
-                                                          element.insert(Jaml.render('rbcriteria2',it2));
-                                                          
-                                                          }
-                                                          }
-                                                          });
-                                  }
-                                  }
-                                  });
+                item.numbers.each(function(it2,idx2)
+                {
+                  if (facetHasNoLimit || limitValues.indexOf(it2.val) >= 0) {
+                 
+                  it2.field = fld;
+                  it2.val=it2.val.replace(/\'/g, "&#34;");
+                  it2.count = formatInteger(it2.count,THOUSAND_SEP);
+                  //element.insert(Jaml.render('rbcriteria',it2));
+                  if (fld!= "language")
+                  element.insert(Jaml.render('rbcriteria',it2));
+                  
+                  else
+                  // check first if langName[it2.val] exists already in rbList
+                  {
+                  checkLang(it2.val,it2.count);
+                  
+                  if (CHECK==0)
+                  element.insert(Jaml.render('rbcriteria2',it2));
+                  
+                  }
+                  }
+                 });
+  }
+  }
+  });
                 
                 
                 facetSlide();
@@ -831,7 +830,7 @@ Jaml.register('keyword', function(data) {
 
 Jaml.register('result', function(data){
            
-           var keywordsToEmbed = "test_mathiou";
+           var keywordsToEmbed = " ";
            
            
            var odd = "";
@@ -868,7 +867,7 @@ Jaml.register('result', function(data){
            article({class:'item-intro '+odd},
                    header(
                           h2(//img({src:imgThumb}),
-                             a({href:"item.html?id="+this_id, title:data.thisTitle, target:'_blank'},data.thisTtitle)),
+                             a({href:"item.html?id="+this_id, cls:'listing-item-title', title:data.thisTitle, target:'_blank'},data.thisTtitle)),
                           section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatleft'},
@@ -876,7 +875,10 @@ Jaml.register('result', function(data){
                                         div({cls:'language'}, span("Creative commons licence:"), thisRights),
                                         div({cls:'language'}, span("Rights:"), thisRights2),
                                         div({cls:'floatright'},
-                                            div({cls:'line alignright'}, a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))
+                                            div({cls:'line alignright'},
+	                                            a({href:"#", cls:'item-intro-left-link'}, "View Resource"),
+	                                            a({href:"#", cls:'item-intro-left-link'}, "View in Provider"), 
+	                                            a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))
            });
 
 
@@ -887,7 +889,7 @@ Jaml.register('resultwithoutkeywords', function(data){
            //               odd++;
            //               var backgroundClass = ""
            //               if(odd%2===0){backgroundClass = "odd";}
-           var keywordsToEmbed = "test_mathiou 2";
+           var keywordsToEmbed = " ";
            
            var odd = "";
            if(data.isOdd%2===1){odd="odd"}
@@ -923,11 +925,14 @@ Jaml.register('resultwithoutkeywords', function(data){
            article({class:'item-intro ' +odd },
                    header(
                           h2(img({src:imgThumb}),
-                             a({href:"item.html?id="+this_id, title:data.thisTitle, target:'_blank'},data.thisTitle)),
+                             a({href:"item.html?id="+this_id, cls:'listing-item-title', title:data.thisTitle, target:'_blank'},data.thisTitle)),
                           section(p({cls:'item-intro-desc'}, data.thisDescription),
                                   aside({cls:'clearfix'},
                                         div({cls:'floatright'},
-                                            div({cls:'line alignright'}, a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))});
+                                            div({cls:'line alignright'},
+                                            a({href:"#", cls:'item-intro-left-link'}, "View Resource"),
+                                            a({href:"#", cls:'item-intro-left-link'}, "View in Provider"), 
+                                            a({href:"item.html?id="+this_id, cls:'moreinfo'}, "More Info")))))))});
 
 
 
