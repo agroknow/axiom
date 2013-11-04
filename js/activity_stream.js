@@ -1,7 +1,7 @@
 function getActivityStream(){
 $.ajax({
-       url: "http://as-ecloud.appspot.com/api/activities",
-       dataType: "json",
+       url: "http://as-ecloud.appspot.com/api/activities/jsonp",
+       dataType: "jsonp",
        success: function(data)
        {
        		for(var item in data.items)
