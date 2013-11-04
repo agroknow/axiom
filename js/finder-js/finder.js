@@ -1,6 +1,4 @@
 /*
- * Copyright ARIADNE Foundation
- *
  * The Finder can be customised by providing a javascript function 'customizeFinder()'
  * that returns an object with parameters. See example below.
  * The parameters that can be specifies are:
@@ -327,6 +325,9 @@ function doSearch(){
         return;
     }
     $('searchMessage').hide();
+    
+    console.log('activityPost_call');
+    activityPost($F('query'));
     
     //showFacets();
     resetFacets();
@@ -988,7 +989,69 @@ jQuery(document).ready(function(){
 }
 
 
+function activityPost(searchedQuery)
+{
+	console.log('activityPost');
+	
+	var country = "Unknown Country";
+	var thisJson = {};
+	/* get country code */
+	jQuery.get("http://ipinfo.io", 
+		function(response) {
+			country = response.country;
+			
+			var thisJson = {
+			    "published": (new Date()).toUTCString(),
+			    "actor":
+			    {
+			        "objectType" : "person",
+			        "id": "gaposx",
+			        "image":
+			        {
+			            "url":"",
+			            "width": 72,
+			            "height": 72
+			        },
+			        "displayName": "User from " + country,
+			        "url": ""
+			    },
+			    "verb": "searched",
+			    "object" :
+			    {
+			        "objectType" : searchedQuery,
+			        "url": "http://www.google.com",
+			        "displayName" : searchedQuery
+			    }
+			};
 
+			publishActivity(thisJson);
+			
+			}, "jsonp");
+	
+			
+}
+
+function publishActivity(thisJson)
+{
+		console.log(thisJson);
+/*
+		jQuery.ajax({
+	        url: "http://as-ecloud.appspot.com/api/activities/add",
+	        type: "POST",
+	        data: thisJson,
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
+            success: function (msg) 
+            {
+				alert(msg);
+				alert('Registerd successfully');
+	        },
+	        error: function (msg) {
+				alert('Failed: '+msg.status);
+	        }
+	    });
+*/
+}
 
 function updatePaginator(NR_RESULTS){
 PAGE.set('totalRecords',NR_RESULTS);
