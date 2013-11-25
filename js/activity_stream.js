@@ -6,12 +6,13 @@ $.ajax({
        {
        		for(var item in data.items)
        		{
-	       		$('#ticker-1').append(
-	       		'<dt>'+data.items[item].actor.displayName+'</dt><dd> has '
-	       		+data.items[item].verb+' '+data.items[item].object.displayName+'</dd>'
-	       		);
+       			if(data.items[item].verb == "searched") {
+		       		$('#ticker-1').append(
+		       		'<dt>'+data.items[item].actor.displayName+'</dt><dd> has '
+		       		+data.items[item].verb+' '+data.items[item].object.displayName+'</dd>'
+		       		);
+       			}
        		}
-       		
 
 	   		/* ticker */
    			var _scroll = {
@@ -38,5 +39,5 @@ $.ajax({
 
        }
     })
-    
+
 }
