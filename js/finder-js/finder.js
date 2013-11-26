@@ -1092,7 +1092,7 @@ function activityPost(searchedQuery) {
   jQuery.get("http://ipinfo.io", function(response) {
     country = response.country;
 
-	var thisJson = {"actor" : {"objectType": "person", "id": country+"_User", "image": { "url": "", "width": 72, "height": 72 }, "displayName": "User from " + country , "url": "" }, "verb": "searched", "object": { "objectType":"searchTerm", "url": "", "displayName": searchedQuery}, "published": "2013-09-12T15:04:55Z" }
+	var thisJson = {"actor" : {"objectType": "person", "id": country+"_User", "image": { "url": "", "width": 72, "height": 72 }, "displayName": "User from " + country , "url": "" }, "verb": "searched", "object": { "objectType":"searchTerm", "url": "", "displayName": searchedQuery}, "published": datetime }
 
     publishActivity(thisJson);
 
@@ -1113,15 +1113,14 @@ function publishActivity(thisJson) {
   jQuery.ajax({
     url: "http://as-ecloud.appspot.com/api/activities/add",
     type: "POST",
-    data: thisJson,
+    data: JSON.stringify(thisJson),
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(msg) {
-      alert(msg);
-      alert('Registerd successfully');
+      console.log('Registerd successfully');
     },
     error: function(msg) {
-      alert('Failed: ' + msg.status);
+      console.log('Failed: ' + msg.status);
     }
   });
 }
