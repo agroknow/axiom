@@ -1092,7 +1092,7 @@ function activityPost(searchedQuery) {
   jQuery.get("http://ipinfo.io", function(response) {
     country = response.country;
 
-	var thisJson = {"actor" : {"objectType": "person", "id": country+"_User", "image": { "url": "", "width": 72, "height": 72 }, "displayName": "User from " + country , "url": "" }, "verb": "searched", "object": { "objectType":"searchTerm", "url": "", "displayName": searchedQuery}, "published": datetime }
+	var thisJson = {"actor" : {"objectType": "person", "id": country+"_User", "image": { "url": "", "width": 72, "height": 72 }, "displayName": "User from " + country , "url": "" }, "verb": "searched", "object": { "objectType":"searchTerm", "url": "http://greenlearningnetwork.org/axiom/listing.html?query=" + searchedQuery, "displayName": searchedQuery}, "published": datetime }
 
     publishActivity(thisJson);
 
