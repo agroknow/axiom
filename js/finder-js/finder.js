@@ -347,6 +347,7 @@ function doSearch() {
 
   console.log('activityPost_call');
   activityPost($F('query'));
+  getRelativeGoogleBooks($F('query'));
 
   //showFacets();
   resetFacets();
@@ -1124,6 +1125,35 @@ function publishActivity(thisJson) {
     }
   });
 }
+
+
+
+/**
+* getRelativeGoogleBooks(search_query)
+* creates the json for the request.
+* @param search_query : the query from search field
+*/
+function getRelativeGoogleBooks(search_query)
+{
+  var gbooks_get = "https://www.googleapis.com/books/v1/volumes?q="+search_query+"+philosophy";
+
+  jQuery.get(gbooks_get, function(response) {
+	  console.log(gbooks_get)
+	  console.log(response.items[0]);
+	  var books = '';
+	  for(i=0 ; i<5; i++) {
+	  	  console.log(response.items[i]);
+		  books += '<li><a href=\"'+response.items[i].volumeInfo.previewLink+'\" target=\"_blank\">'+(i+1)+'. '+response.items[i].volumeInfo.title+'</a></li>';
+	  }
+
+	  console.log(books);
+	  document.getElementById('related_google_books_items').innerHTML = '<ul>'+books+'</ul>';
+
+  }, "jsonp");
+
+}
+
+
 
 function updatePaginator(NR_RESULTS) {
   PAGE.set('totalRecords', NR_RESULTS);

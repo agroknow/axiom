@@ -1,13 +1,13 @@
-body 
-{ 
+body
+{
 	background-color:#FFFFFF;
 	width: 1024px;
 	margin:0px auto;
 }
 
-* 	
-{ 
-	color:black; 
+*
+{
+	color:black;
     font-family:'Georgia'
 }
 
@@ -25,7 +25,7 @@ a:hover {text-decoration: none; color:#3B83BD;}
 	margin-top: 50px;
 	width:780px;
 	display: inline-block;
-	
+
 }
 
 #breadcrump{
@@ -54,36 +54,36 @@ a:hover {text-decoration: none; color:#3B83BD;}
 	border-top: 1px solid rgba(0,0,0,0.6);
 	z-index: 50;
 }
-	
-#activity_wrapper h3 
+
+#activity_wrapper h3
 {
 	font-size: 20px;
 	text-align: center;
 }
 
-#activity_wrapper div 
+#activity_wrapper div
 {
 	background-color: solid rgba(0,0,0,0.3);
 	width: 100%;
 	height: 30px;
 	padding: 10px 0;
 	overflow: hidden;
-	
-	
+
+
 }
 
-#activity_wrapper div .first 
+#activity_wrapper div .first
 {
 	border-bottom: none;
 }
 
-#activity_wrapper dl 
+#activity_wrapper dl
 {
 	display: block;
 	margin: 0;
 }
 
-#activity_wrapper dt, dd 
+#activity_wrapper dt, dd
 {
 	display: block;
 	float: left;
@@ -97,7 +97,7 @@ a:hover {text-decoration: none; color:#3B83BD;}
 	text-decoration: none;
 }
 
-#activity_wrapper dt 
+#activity_wrapper dt
 {
 	background-color: #f66;
 	color: #fff;
@@ -108,7 +108,7 @@ a:hover {text-decoration: none; color:#3B83BD;}
 	border-radius: 4px;
 }
 
-#activity_wrapper dd 
+#activity_wrapper dd
 {
 	color: #333;
 	margin-right: 50px;
@@ -129,7 +129,7 @@ footer div{
 	float:left;
 	text-align:left;
 	margin: 0px 10px 10px 0px;
-	
+
 }
 
 footer div img{
@@ -254,7 +254,7 @@ footer div a{
     border-color: transparent black transparent;
     top: 12px;
     left: -6px;
-    
+
 }
 
 .form-wrapper button:hover:before{
@@ -360,7 +360,7 @@ footer div a{
 }
 
 .moreinfo {
-	
+
 	margin-right:9px;
 	display:inline-block;
 	line-height:18px;
@@ -420,7 +420,7 @@ footer div a{
 {
     margin:10px auto;
     text-align: center;
-    
+
 }
 
 .yui-pg-page
@@ -428,7 +428,7 @@ footer div a{
     margin:30px 0px 0px 5px;
     padding:4px 10px 4px 10px;
 	font-size:16px;
-    background:url(images/nav_back.png) center no-repeat;
+/*     background:url(../images/nav_back.png) center no-repeat; */
 }
 
 .yui-pg-current-page
@@ -436,7 +436,7 @@ footer div a{
     color:black;
     font-weight:bold;
     text-decoration:none;
-    
+
     border:1px solid #20272d;
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
@@ -445,7 +445,7 @@ footer div a{
 .yui-pg-previous
 {
     padding-left:10px;
-    
+
 }
 .yui-pg-next
 {
@@ -503,7 +503,7 @@ footer div a{
 .filter_child {
 	/*display:none;*/
 	padding-top:0.2em;
-	
+
 }
 .filter_child.hasscroll {
 	overflow:hidden;
@@ -518,7 +518,7 @@ footer div a{
     width:100%;
     padding:4px 0px;
     border-bottom: solid 1px rgba(0,0,0,0.08);
-	
+
 }
 .filter_child a:hover
 {
@@ -565,16 +565,18 @@ footer div a{
 .filter_child a.facet-selected span.total
 {
     background-color:#3c5b6f;
-    font-weight:none;  
-    font-size:1em; 
+    font-weight:none;
+    font-size:1em;
     color:white;
 }
 
 .remove_filters {
 	text-align:right;
+	float:right;
+	margin:10px 0;
 	height:18px;
 	text-transform:uppercase;
-   
+
 }
 .remove_filters a {
 	margin-right:9px;
@@ -585,7 +587,7 @@ footer div a{
 	padding:0px 3px 0px 3px;
     color:white;
     text-decoration: none;
-    
+
     background-color:#fbbb4b;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -594,6 +596,35 @@ footer div a{
 .remove_filters a:hover
 {
 	color: #8b390f;
+}
+
+
+
+#related_google_books {
+	display: inline-block;
+	border: 1px solid rgba(1,1,1,0.1);
+	padding: 0px 4px;
+}
+
+#related_google_books_items ul{
+	list-style: none;
+	padding-left: 0px;
+	display: inline-block;
+}
+
+#related_google_books_items ul li {
+	display: inline-block;
+	width:100%;
+}
+
+#related_google_books_items ul li a{
+	padding: 5px 0px;
+	font-size: 1em;
+	color: black;
+}
+
+#related_google_books_items ul li a:hover{
+	color:#3B83BD;
 }
 /*****************************************=/LISTING PAGE**************************************/
 
