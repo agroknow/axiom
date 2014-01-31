@@ -49,7 +49,11 @@
 
   <div class="clearfix"></div><!--filters-->
 
+	<div id="visualize_data">
+	    <a href="http://ecloud.okfn.de/timemapper/index.php?search=$search_term_in_finder" target="_blank">Visualize Data in Map</a>
+    </div>
   <aside class="filter">
+
     <div id="insert_summary"></div>
     <!-- Results : (1 - 12 of 216) from Ajax.JSONRequest() -->
 
@@ -62,12 +66,15 @@
       "font-size:12px;">remove filters</a>
     </div>
 
-    <div id="related_google_books">
-    <h3>Related Google Books</h3>
-    <div id="related_google_books_items">
-		Search something first.
-    </div>
-    </div>
+
+    <!--<div id="related_google_books">
+	    <h3>Related Google Books</h3>
+	    <div id="related_google_books_items">
+			Search something first.
+	    </div>
+    </div>-->
+
+
   </aside><!--end filters-->
 
   <section class="listing">
@@ -122,7 +129,7 @@
             "pageContainers": ['bottom','top'],
             "facets": ["provider", "contentType","date","language"], /* ,"licenceUri", "collection" */
             "maxLengthDescription":  300,
-            "pageSize": 6,
+            "pageSize": 8,
             "repositoryName": "eCloud",
             /* "serviceUrl":"http://54.228.180.124:8080/ecloud/api/ariadne/restp" */
             "serviceUrl":"http://83.212.122.220:8080/ecloud/api/ariadne/restp"

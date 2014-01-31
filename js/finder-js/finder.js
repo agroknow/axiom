@@ -347,7 +347,7 @@ function doSearch() {
 
 /*   console.log('activityPost_call'); */
   activityPost($F('query'));
-  getRelativeGoogleBooks($F('query'));
+  /* getRelativeGoogleBooks($F('query')); */
 
   //showFacets();
   resetFacets();
@@ -606,8 +606,8 @@ function findMaterials(start, numberResults, needsUpdate, initUpdate) {
 */
 
           /* LISTING ICON BY PROVIDER*/
-          if (item.identifier.indexOf('europeana') != -1) item.format = 'images/icons/europeana.png';
-          else if (item.identifier.indexOf('googleapis') != -1) item.format = 'images/icons/googlebooks.png';
+          if (item.contextUri.indexOf('europeana') != -1) item.format = 'images/icons/europeana.png';
+          else if (item.contextUri.indexOf('books.google') != -1) item.format = 'images/icons/googlebooks.png';
 
 
 
@@ -907,7 +907,18 @@ function initializeJamlTemplates() {
       thisRights2 == "undefined";
     }
 
-    var this_id = data.identifier.replace("http://", "");
+	var this_id = data.identifier.replace("http://", "");
+	console.log(this_id);
+	/*TO BE REPLACED BY A GENERAL SOLUTION : FIXES PROBLEM WITH 'id=' and '-' inside google books URIs*/
+	if(this_id.indexOf('books.google') !== -1) {
+		this_id = this_id.split('id=')[1];
+		if(this_id[0]=='-') {
+			this_id = this_id.replace('-','');
+		}
+	}
+	/*-------*/
+
+
     article({
       class: 'item-intro ' + odd
     }, header(
@@ -973,13 +984,28 @@ function initializeJamlTemplates() {
     } //end if
 
     var imgThumb = data.format;
-/*
-           if(data.contentType[0].toUpperCase() == 'IMAGE')
-           {
-           imgThumb = data.objectUri[0];
-           }
-*/
+
+
+	/*
+	           if(data.contentType[0].toUpperCase() == 'IMAGE')
+	           {
+	           imgThumb = data.objectUri[0];
+	           }
+	*/
+
     var this_id = data.identifier.replace("http://", "");
+	console.log(this_id);
+    /*TO BE REPLACED BY A GENERAL SOLUTION : FIXES PROBLEM WITH id= inside google books URIs*/
+	if(this_id.indexOf('books.google') !== -1) {
+		this_id = this_id.split('id=')[1];
+		if(this_id[0]=='-') {
+			this_id = this_id.replace('-','');
+		}
+	}
+	/*-------*/
+
+
+
     article({
       class: 'item-intro ' + odd
     }, header(
@@ -1152,7 +1178,7 @@ function getRelativeGoogleBooks(search_query)
 		  books += '<li><a href=\"'+response.items[i].volumeInfo.previewLink+'\" target=\"_blank\">'+(i+1)+'. '+response.items[i].volumeInfo.title+'</a></li>';
 	  }
 
-	  console.log(books);
+	  /* console.log(books); */
 	  document.getElementById('related_google_books_items').innerHTML = '<ul>'+books+'</ul>';
 
   }, "jsonp");

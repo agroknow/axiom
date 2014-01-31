@@ -4,6 +4,8 @@
 
 function getItemJSONP(itemID) {
 
+	console.log(itemID);
+
   urlTemp = "http://83.212.122.220:8080/ecloud/api/ariadne/restp?json=%7B%22clause%22%3A%20%5B%7B%22language%22%3A%20%22VSQL%22%2C%20%22expression%22%3A%20%22" + itemID + "%22%7D%5D%2C%20%22resultInfo%22%3A%20%22display%22%2C%20%22resultListOffset%22%3A%200%2C%20%22resultListSize%22%3A%206%2C%20%22idListOffset%22%3A%200%2C%20%22uiLanguage%22%3A%20%22en%22%2C%20%22facets%22%3A%20%5B%22provider%22%2C%20%22language%22%2C%20%22format%22%2C%20%22classification%22%5D%2C%20%22idListSize%22%3A%206%2C%20%22resultFormat%22%3A%20%22json%22%2C%20%22resultSortkey%22%3A%20%22%22%7D&engine=InMemory";
   //alert(urlTemp);
   /*languages - to be replaced with flags*/
@@ -50,7 +52,7 @@ function getItemJSONP(itemID) {
     dataType: "jsonp",
     success: function(data) {
 
-
+		console.log(data);
 
       //parse array and create an JS Object Array
       //every item is a JSON
@@ -62,7 +64,7 @@ function getItemJSONP(itemID) {
         record = tmp.result.metadata[0];
       }
 
-      console.log(tmp);
+
 
       //MORE INFO
       /* provider */

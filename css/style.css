@@ -338,6 +338,20 @@ footer div a{
 
 
 /******************************************LISTING PAGE**************************************/
+
+/* Data visualization*/
+#visualize_data {
+	display: inline-block;
+	float:right;
+	font-size: 16px;
+	text-align: right;
+	padding-bottom:5px;
+	padding-right:5px;
+	margin-bottom:15px;
+	border-bottom: 1px solid gray;
+}
+/*----*/
+
 .results_header{
 	visibility: hidden;
 	padding: 0px;
