@@ -265,7 +265,7 @@ function getItemJSONP(itemID) {
 
       /* bottom menu */
       if (record.contextUri != undefined) {
-        document.getElementById('resource_actions').innerHTML = "<a href=\"" + record.contextUri + "\" target=\"_blank\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
+        document.getElementById('resource_actions').innerHTML = "<a href=\"" + record.contextUri + "\" target=\"_blank\"> View Resource in Provider</a><a href=\"javascript:;\">Add for Annotation</a><a href=\"javascript:;\"> Download XML file</a>";
       } else {
         document.getElementById('resource_actions').innerHTML = "<a href=\"#\"> View Resource</a><a href=\"#\">Add for Annotation</a><a href=\"#\"> Download XML file</a>";
       }

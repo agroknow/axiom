@@ -345,7 +345,7 @@ function doSearch() {
   }
   $('searchMessage').hide();
 
-  console.log('activityPost_call');
+/*   console.log('activityPost_call'); */
   activityPost($F('query'));
   getRelativeGoogleBooks($F('query'));
 
@@ -584,6 +584,8 @@ function findMaterials(start, numberResults, needsUpdate, initUpdate) {
 
           console.log(item);
 
+		   /* LISTING ICONS BY TYPE */
+		  /*
           if (item.format != undefined && item.format[0] != undefined) {
             if (item.format.indexOf('pdf') != -1) item.format = 'images/icons/pdf.png';
             else if (item.format.indexOf('powerpoint') != -1) item.format = 'images/icons/ppt.png';
@@ -601,6 +603,13 @@ function findMaterials(start, numberResults, needsUpdate, initUpdate) {
           } else {
             item.format = 'images/icons/application.png';
           }
+*/
+
+          /* LISTING ICON BY PROVIDER*/
+          if (item.identifier.indexOf('europeana') != -1) item.format = 'images/icons/europeana.png';
+          else if (item.identifier.indexOf('googleapis') != -1) item.format = 'images/icons/googlebooks.png';
+
+
 
 
           /* Description */
@@ -925,12 +934,10 @@ function initializeJamlTemplates() {
     }, div({
       cls: 'line alignright'
     }, a({
-      href: "#",
+      href: data.contextUri,
       cls: 'item-intro-left-link'
-    }, "View Resource"), a({
-      href: "#",
-      cls: 'item-intro-left-link'
-    }, "View in Provider"), a({
+    }, "View Resource in Provider"),
+    	a({
       href: "item.html?id=" + this_id,
       cls: 'moreinfo'
     }, "More Info")))))))
@@ -992,12 +999,11 @@ function initializeJamlTemplates() {
     }, div({
       cls: 'line alignright'
     }, a({
-      href: "#",
+      href: data.contextUri,
+      target: '_blank',
       cls: 'item-intro-left-link'
-    }, "View Resource"), a({
-      href: "#",
-      cls: 'item-intro-left-link'
-    }, "View in Provider"), a({
+    }, "View Resource in Provider"),
+    	 a({
       href: "item.html?id=" + this_id,
       cls: 'moreinfo'
     }, "More Info")))))))
@@ -1085,7 +1091,7 @@ function facetSlide() {
 *
 */
 function activityPost(searchedQuery) {
-  console.log('activityPost');
+/*   console.log('activityPost'); */
 
   var country = "Unknown Country";
   var datetime = (new Date()).toISOString();
@@ -1110,7 +1116,7 @@ function activityPost(searchedQuery) {
 *
 */
 function publishActivity(thisJson) {
-  console.log(thisJson);
+/*   console.log(thisJson); */
   jQuery.ajax({
     url: "http://as-ecloud.appspot.com/api/activities/add",
     type: "POST",
@@ -1118,10 +1124,10 @@ function publishActivity(thisJson) {
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function(msg) {
-      console.log('Registerd successfully');
+/*       console.log('Registerd successfully'); */
     },
     error: function(msg) {
-      console.log('Failed: ' + msg.status);
+/*       console.log('Failed: ' + msg.status); */
     }
   });
 }
@@ -1138,11 +1144,11 @@ function getRelativeGoogleBooks(search_query)
   var gbooks_get = "https://www.googleapis.com/books/v1/volumes?q="+search_query+"+philosophy";
 
   jQuery.get(gbooks_get, function(response) {
-	  console.log(gbooks_get)
-	  console.log(response.items[0]);
+/* 	  console.log(gbooks_get) */
+/* 	  console.log(response.items[0]); */
 	  var books = '';
 	  for(i=0 ; i<5; i++) {
-	  	  console.log(response.items[i]);
+/* 	  	  console.log(response.items[i]); */
 		  books += '<li><a href=\"'+response.items[i].volumeInfo.previewLink+'\" target=\"_blank\">'+(i+1)+'. '+response.items[i].volumeInfo.title+'</a></li>';
 	  }
 

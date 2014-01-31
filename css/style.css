@@ -456,12 +456,11 @@ footer div a{
 .filter {
 	width:230px;
 	background:none;
+	padding-left: 4px;
     margin-bottom:30px;
     float:left;
+    border-left: 1px solid rgba(0,0,0,0.2);
 
-	-webkit-border-radius:0 0 4px 4px;
-	-moz-border-radius:0 0 4px 4px;
-	border-radius:0 0 4px 4px;
 }
 .filter a
 {
@@ -474,13 +473,13 @@ footer div a{
 {
 	line-height:35px;
     text-decoration: none;
-    font-size:14px;
+    font-size:16px;
     width:100%;
 }
 
 .filter_parent:hover
 {
-    /*background: url(images/filter_parent_hover.png);*/
+    background-color: #3B83BD;
 }
 
 .filter_parent.opened:hover
@@ -490,14 +489,15 @@ footer div a{
 
 .filter_parent.opened
 {
-/* 	background-position:93% -22px; */
+	background-color: #3B83BD; /* rgba(0,0,0,0.2); */
 }
 
 .filter_parent span {
 	margin-left:0px;
 	display:block;
-    font-size:14px;
+    font-size:16px;
     color:black;
+    text-align: center;
     border-bottom: solid 1px rgba(0,0,0, 0.3)
 }
 .filter_child {
@@ -564,8 +564,9 @@ footer div a{
 
 .filter_child a.facet-selected span.total
 {
-    background-color:#3c5b6f;
+    background-color:#3B83BD;
     font-weight:none;
+    padding:2px;
     font-size:1em;
     color:white;
 }
