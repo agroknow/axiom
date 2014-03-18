@@ -287,12 +287,6 @@ function resetFacets() {
 }
 
 
-
-
-
-
-
-
 function getExternalSourceResult(prefix, engine) {
   if ($(prefix + '_results').empty()) {
     if ($F('query').blank()) {
@@ -345,9 +339,14 @@ function doSearch() {
   }
   $('searchMessage').hide();
 
-/*   console.log('activityPost_call'); */
+  /* console.log('activityPost_call'); */
   activityPost($F('query'));
   /* getRelativeGoogleBooks($F('query')); */
+
+	//pass parameter for timemapper
+	document.getElementById('visualize_data').innerHTML = '<a href="http://ecloud.okfn.de/timemapper/index.php?search='+$F('query')+'" target="_blank">Visualize Data in Map</a>';
+	console.log($F('query'));
+
 
   //showFacets();
   resetFacets();
